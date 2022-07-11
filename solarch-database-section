@@ -1,0 +1,119 @@
+DATABASE SECTION:
+================
+Q.eadaina app 2 regions(india and london) lo nundi service ni esthunnappudu
+and db andulo oka region(london) ki link aie vunnappudu , austrilia users ki website access slow ipothundi
+
+so elanti secnario lo first issuye app location valla lekapotey db location valla anedhi ardamcheskovali
+db issue kabatti sol is
+SOlUTION:
+----------
+The issue here is latency with read queries being directed from Australia to UK which is great physical distance. 
+A solution is required for improving read performance in Australia.
+CORRECT: "Migrate the database to an Amazon Aurora global database in MySQL compatibility mode.
+Configure read replicas in ap-southeast-2" is the correct answer.
+
+aurora global db ki migrate cheydam endukantey auroradb one master data in on primary az, and remainign 5 rplicas different secondary regions lo maintain chestadi
+so, ela cheydam secondary regions lo vunna read replicas valla US vallaki kuda access speed ga vuuntadi. 
+write oprtns improve avvakapovachu kani read oprtns improve avutadi
+===========================================================================================================================================================
+Q.oka postgresql db unencrypt lo vundi kani client ki uregnt ga exisiiting and new records anni kuda encrypt ipovali
+at the same time avi very huge volues data assala loss avvakudadhu
+
+CORRECT: "Create a snapshot of the existing RDS DB instance. Create an encrypted copy of the snapshot.
+Create a new RDS DB instance from the encrypted snapshot and update the application. 
+Use AWS DMS to synchronize data between the source and destination RDS DBs" is the correct answer.
+
+
+Explanation
+You cannot change the encryption status of an existing RDS DB instance.
+Encryption must be specified when creating the RDS DB instance.
+The best way to encrypt an existing database is to take a snapshot, encrypt a copy of the snapshot and restore the snapshot to a new RDS DB instance. 
+This results in an encrypted database that is a new instance. 
+Applications must be updated to use the new RDS DB endpoint.
+
+In this scenario as there is a high rate of change, the databases will be out of sync by the time the new copy is created and is functional. 
+The best way to capture the changes between the source (unencrypted) and destination (encrypted) DB 
+is to use AWS Database Migration Service (DMS) to synchronize the data.
+===========================================================================================
+Q.oka sol arch desgin chesina service lo frontend api gateway dwara data ni thiskoni
+ah data ni key-vlaue lo store cheyyali, starting 1gb saripothundi mundu munduki entha vuddo telifhu 
+e sceanario ki sol
+
+CORRECT: "AWS Lambda" is a correct answer.
+
+CORRECT: "Amazon DynamoDB" is also a correct answer.
+
+exp:
+AWS lambda api gatway ni use chesi data ni dynamodb table lo store cheydanki use avuthundi
+chala key-value dbs vunnai kani ekkada dynamodb ni enduku thiskunnam antey 
+DynamoDB is built for key-value data storage requirements and is also serverless and easily scalable.
+and also This is therefore a cost effective solution for unpredictable workloads.
+==========================================================================================================================
+Q.manam rds bd ni customer orders ni store cheydaniki use chestunnam anuko,
+ah files store avthunnappudu transit lo db connections anni kuda secure aie vundali app connections ki with SSL certificates tho
+
+Explanation
+Amazon RDS creates an SSL certificate and installs the certificate on the DB instance when Amazon RDS provisions the instance. 
+These certificates are signed by a certificate authority. 
+The SSL certificate includes the DB instance endpoint as the Common Name (CN) for the SSL certificate to guard against spoofing attacks.
+
+You can download a root certificate from AWS that works for all Regions or you can download Region-specific intermediate certificates.
+
+CORRECT: "Download the AWS-provided root certificates. Use the certificates when connecting to the RDS DB instance" is the correct answer.
+==============================================================================================================================================
+Q. eadaina app create aie, ah data/files ni ec2 lo store/generate chesthundi
+and another set of instances analyxe/ modify chestai, but need good storage requirementon this
+
+EXP: 
+Amazon Elastic File System (Amazon EFS) provides a simple, scalable, fully managed elastic NFS file system for use with AWS Cloud services and on-premises resources.
+It is built to scale on-demand to petabytes without disrupting applications, 
+growing and shrinking automatically as you add and remove files, eliminating the need to provision and manage capacity to accommodate growth.
+
+Amazon EFS supports the Network File System version 4 (NFSv4.1 and NFSv4.0) protocol. 
+Multiple Amazon EC2 instances can access an Amazon EFS file system at the same time, providing a common data source for workloads and applications running on more than one instance or server.
+
+For this scenario, EFS is a great choice as it will provide a scalable file system that can be mounted by multiple EC2 instances and accessed simultaneously.
+
+CORRECT: "Store the data in an Amazon EFS filesystem. Mount the file system on the application instances" is the correct answer.
+
+========================================================================================================================================
+Q. an app runs on ec2 machines, web app runs on public subnets and db runs on private subnets
+bth subnets are in sam az
+
+Which combination of steps should a solutions architect take to provide high availability for this architecture? (Select TWO.)
+
+Explanation
+High availability can be achieved by using multiple Availability Zones within the same VPC.
+An EC2 Auto Scaling group can then be used to launch web application instances in multiple public subnets
+across multiple AZs and an ALB can be used to distribute incoming load.
+
+The database solution can be made highly available by migrating from EC2 to Amazon RDS and using a Multi-AZ deployment model. 
+This will provide the ability to failover to another AZ in the event of a failure of the primary database or the AZ in which it runs.
+
+CORRECT: "Create an EC2 Auto Scaling group and Application Load Balancer that spans across multiple AZs" is a correct answer.
+CORRECT: "Create new public and private subnets in a different AZ. Migrate the database to an Amazon RDS multi-AZ deployment" is also a correct answer.
+==============================================================================================================================================================
+Q.oka app already HA lo run avuthundi like ALB, ASG,EC2 etc..but vallaki appudaina suddenga request llimit periginappudu kuda
+ea down time rakunda sol kavali
+
+Explanation
+The architecture is already highly resilient but the may be subject to performance degradation if there are sudden increases in request rates. 
+To resolve this situation Amazon Aurora Read Replicas can be used to serve read traffic which offloads requests from the main database. 
+On the frontend an Amazon CloudFront distribution can be placed in front of the ALB and this will cache content for better performance 
+and also offloads requests from the backend.
+
+CORRECT: "Add Amazon Aurora Replicas" is the correct answer.
+CORRECT: "Add an Amazon CloudFront distribution in front of the ALB" is the correct answer.
+======================================================================================================
+Q. oka aws RDS read replica different regions lo vunnai and master db lo vunna data encrypted 
+alaney e new replicas lo data kuda encrypt avvali
+
+SOL
+Explanation
+You cannot create an encrypted Read Replica from an unencrypted master DB instance.
+You also cannot enable encryption after launch time for the master DB instance. 
+Therefore, you must create a new master DB by taking a snapshot of the existing DB, encrypting it,
+and then creating the new DB from the snapshot. You can then create the encrypted cross-region Read Replica of the master DB.
+
+CORRECT: "Encrypt a snapshot from the master DB instance, create a new encrypted master DB instance, 
+and then create an encrypted cross-region Read Replica" is the correct answer.
