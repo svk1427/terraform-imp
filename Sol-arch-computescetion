@@ -1,0 +1,166 @@
+Q.company runs ap and db on single instance , but they need to deploy same app
+in new region bcz of disaster 
+
+sol:
+CORRECT: "Copy an Amazon Machine Image (AMI) of an EC2 instance and specify the second Region for the destination" is a correct answer.
+CORRECT: "Launch a new EC2 instance from an Amazon Machine Image (AMI) in the second Region" is also a correct answer.
+=========================================================================================
+Q. oka e-comm app twarlo new product ni launh cheyaliani chusthundi
+launch chesina ventaney trafic ekkuva avuthundi , elanti time lo ela app down avvakunda chudali
+
+Explanation
+Scaling based on a schedule allows you to set your own scaling schedule for predictable load changes.
+To configure your Auto Scaling group to scale based on a schedule, you create a scheduled action.
+This is ideal for situations where you know when and for how long you are going to need the additional capacity.
+
+CORRECT: "Add a Scheduled Scaling action" is the correct answer.
+===========================================================================
+Q. oka web app six ec2 servers lo run avuthundi adhi kuda single az lo
+by using ALB and ASG but HA ledhu , HA ki proper solution kavali
+
+Explanation
+The only thing that needs to be changed in this scenario to enable HA is to split the instances across multiple Availability Zones.
+The architecture already uses Auto Scaling and Elastic Load Balancing so there is plenty of resilience to failure. 
+Once the instances are running across multiple AZs there will be AZ-level fault tolerance as well.
+
+CORRECT: "Modify the Auto Scaling group to use two instances across each of three Availability Zones" is the correct answer.
+
+==============================
+Q. oka app ec2 lo run avuthundi dhaniki 250gb avasarm and ah app
+daily use cheyru peeddaga kani mrng and afn times lo baga traffic ostadi maximum of 3,000 IOPS
+A Solutions Architect must recommend the most cost-effective storage solution that delivers the performance required.
+
+Explanation
+General Purpose SSD (gp2) volumes offer cost-effective storage that is ideal for a broad range of workloads. 
+These volumes deliver single-digit millisecond latencies and the ability to burst to 3,000 IOPS for extended periods of time.
+
+Between a minimum of 100 IOPS (at 33.33 GiB and below) and a maximum of 16,000 IOPS (at 5,334 GiB and above), 
+baseline performance scales linearly at 3 IOPS per GiB of volume size. AWS designs gp2 volumes to deliver their provisioned performance 99% of the time. 
+A gp2 volume can range in size from 1 GiB to 16 TiB.
+
+In this configuration the volume will provide a baseline performance of 750 IOPS but will always be able to 
+burst to the required 3,000 IOPS during periods of increased traffic.
+CORRECT: "Amazon EBS General Purpose SSD (gp2)" is the correct answer.
+======================================================================================
+Q.on-premises db ni ec2 ki migrate cheyyali anukununaaru , the db requires 64k iops
+if possible the whole db will be store on single ebs volume
+
+CORRECT: "Create a Nitro-based Amazon EC2 instance with an Amazon EBS Provisioned IOPS SSD (i01) volume attached. 
+Provision 64,000 IOPS for the volume" is the correct answer.
+
+Explanation
+Amazon EC2 Nitro-based systems are not required for this solution but do offer advantages in performance that will help to maximize the usage of the EBS volume. 
+For the data storage volume an i01 volume can support up to 64,000 IOPS so a single volume 
+with sufficient capacity (50 IOPS per GiB) can be deliver the requirements.
+=======================================================================================
+Q.eadaina server exact ga 1 yr varuku  kavali annappudu elanti ec2 class ni select cheskovali :
+Explanation
+On-Demand Capacity Reservations enable you to reserve compute capacity for your Amazon EC2 instances in a specific Availability Zone for any duration. 
+This gives you the ability to create and manage Capacity Reservations independently from the billing discounts offered by Savings Plans or Regional Reserved Instances.
+
+By creating Capacity Reservations, you ensure that you always have access to EC2 capacity when you need it,
+for as long as you need it. You can create Capacity Reservations at any time, 
+without entering a one-year or three-year term commitment, and the capacity is available immediately.
+
+The table below shows the difference between capacity reservations and other options:
+
+CORRECT: "On-Demand Capacity Reservations" is the correct answer.
+===============================================================================================================
+Q. oka game app ec2 lo host avuthundi in single az lo , dhiniki high ava ni ela set cheyyali and users connect over Layer 4
+
+Explanation
+The solutions architect must enable high availability for the architecture and ensure it is cost-effective. 
+To enable high availability an Amazon EC2 Auto Scaling group should be created to add and remove instances across multiple availability zones.
+
+In order to distribute the traffic to the instances the architecture should use a Network Load Balancer which operates at Layer 4.
+This architecture will also be cost-effective as the Auto Scaling group will ensure the right number of instances are running based on demand.
+
+CORRECT: "Configure a Network Load Balancer in front of the EC2 instances" is a correct answer.
+==================================================================
+Q. oka app deployed on ec2 instances in 3 private subnets, dhanni internet lo available ga vundadaniki ela design cheyyyali
+The application must be made accessible to internet-based clients with the least amount of administrative effort.
+
+Explanation
+To make the application instances accessible on the internet the Solutions Architect needs to place them behind an internet-facing Elastic Load Balancer. 
+The way you add instances in private subnets to a public facing ELB is to add public subnets in the same AZs as the private subnets to the ELB.
+You can then add the instances and to the ELB and they will become targets for load balancing.
+
+CORRECT: "Create an Application Load Balancer and associate three public subnets from the same Availability Zones as the private instances. 
+Add the private instances to the ALB" is the correct answer.
+=================================================================================
+Q.A web application runs in public and private subnets. 
+The application architecture consists of a web tier and database tier running on Amazon EC2 instances. 
+Both tiers run in a single Availability Zone (AZ).
+
+Which combination of steps should a solutions architect take to provide high availability for this architecture? (Select TWO.)
+
+CORRECT: "Create an Amazon EC2 Auto Scaling group and Application Load Balancer (ALB) spanning multiple AZs" is the correct answer.
+
+CORRECT: "Create new public and private subnets in the same VPC, each in a new AZ. Migrate the database to an Amazon RDS multi-AZ deployment" is the correct answer.
+
+Explanation
+To add high availability to this architecture both the web tier and database tier require changes.
+For the web tier an Auto Scaling group across multiple AZs with an ALB will ensure there are always instances running and traffic is being distributed to them.
+
+The database tier should be migrated from the EC2 instances to Amazon RDS to take advantage of a managed database with Multi-AZ functionality. 
+This will ensure that if there is an issue preventing access to the primary database a secondary database can take over.
+
+Q. Eadaina oka app ni manam run chesthunnappudu, dhannni business hours lo stop chesi malli restart cheyyali antey ela ?
+Explanation
+When you hibernate an instance, Amazon EC2 signals the operating system to perform hibernation (suspend-to-disk). 
+Hibernation saves the contents from the instance memory (RAM) to your Amazon Elastic Block Store (Amazon EBS) root volume.
+Amazon EC2 persists the instance's EBS root volume and any attached EBS data volumes. When you start your instance:
+
+- The EBS root volume is restored to its previous state
+
+- The RAM contents are reloaded
+
+- The processes that were previously running on the instance are resumed
+
+- Previously attached data volumes are reattached and the instance retains its instance ID
+
+CORRECT: "Hibernate the instance outside business hours. Start the instance again when required" is the correct answer.
+
+=================================================================================================================================
+Q.oka company lo quarter ki okasari large batch process cheyyalsi vundi
+e job 5 days run avuthundi by using 15 instances amd 5 hours per day
+he company is investigating ways to reduce the cost of the batch processing job.
+
+Explanation
+Each EC2 instance runs for 5 hours a day for 5 days per quarter or 20 days per year. 
+This is time duration is insufficient to warrant reserved instances as these require a commitment of a minimum of 1 year
+and the discounts would not outweigh the costs of having the reservations unused for a large percentage of time. In this case, 
+there are no options presented that can reduce the cost and therefore on-demand instances should be used.
+
+CORRECT: "On-Demand Instances" is the correct answer.
+
+Q.ok app ni ALB and ASG lo run cheyyali adhi kuda kavalsinappudu dynamic ga oinstances deploy avvali
+best solution for that
+
+CORRECT: "Configure an Application Load Balancer in front of an Auto Scaling group to deploy instances to multiple Availability Zones" is the correct answer.
+=====================================================================================================
+Q.An application running on an Amazon ECS container instance using the EC2 launch type needs permissions to write data to Amazon DynamoDB.
+
+How can you assign these permissions only to the specific ECS task that is running the application?
+
+Explanation
+To specify permissions for a specific task on Amazon ECS you should use IAM Roles for Tasks. 
+The permissions policy can be applied to tasks when creating the task definition, or by using an IAM task role override using the AWS CLI or SDKs.
+The taskRoleArn parameter is used to specify the policy.
+
+CORRECT: "Create an IAM policy with permissions to DynamoDB and assign It to a task using the taskRoleArn parameter" is the correct answer.
+
+=====================================
+Q.Amazon EC2 instances in a development environment run between 9am and 5pm Monday-Friday. 
+Production instances run 24/7. Which pricing models should be used? (choose 2)
+
+Explanation
+Capacity reservations have no commitment and can be created and canceled as needed. 
+This is ideal for the development environment as it will ensure the capacity is available. 
+There is no price advantage but none of the other options provide a price advantage whilst also ensuring capacity is available
+
+Reserved instances are a good choice for workloads that run continuously. This is a good option for the production environment.
+
+CORRECT: "On-demand capacity reservations for the development environment" is a correct answer.
+
+CORRECT: "Use Reserved instances for the production environment" is also a correct answer.
