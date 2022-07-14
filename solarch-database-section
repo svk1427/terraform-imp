@@ -117,3 +117,51 @@ and then creating the new DB from the snapshot. You can then create the encrypte
 
 CORRECT: "Encrypt a snapshot from the master DB instance, create a new encrypted master DB instance, 
 and then create an encrypted cross-region Read Replica" is the correct answer.
+
+-> eadaina oka company ki rendu vidhaluga use chesina db service kavali
+1. complex queries use chestadi, 2. small quries fast ga run chestadi
+
+Explanation
+RedShift is a columnar data warehouse DB that is ideal for running long complex queries.
+RedShift can also improve performance for repeat queries by caching the result and returning the cached result when queries are re-run. 
+Dashboard, visualization, and business intelligence (BI) tools that execute repeat queries see a significant boost in performance due to result caching.
+
+-> ElastiCache is a web service that makes it easy to deploy and run Memcached or Redis protocol-compliant server nodes in the cloud.
+
+The in-memory caching provided by ElastiCache can be used to significantly improve latency and throughput for many 
+read-heavy application workloads or compute-intensive workloads.
+
+-> Dynamodb use chesthunna db ki kkuva traffic aie slow access itey em chheyyalantey
+DynamoDB offers consistent single-digit millisecond latency. 
+However, DynamoDB + DAX further increases performance with response times in microseconds for millions of requests per second for read-heavy workloads.
+
+-> ALB set chesi launch chesina app ki ddos attacks avi avvakunda aapali antey
+A rate-based rule tracks the rate of requests for each originating IP address, and triggers the rule action on IPs with rates that go over a limit. 
+You set the limit as the number of requests per 5-minute time span.
+
+You can use this type of rule to put a temporary block on requests from an IP address that's sending excessive requests.
+By default, AWS WAF aggregates requests based on the IP address from the web request origin, 
+but you can configure the rule to use an IP address from an HTTP header, like X-Forwarded-For, instead.
+
+CORRECT: "Configure an AWS WAF ACL with rate-based rules. Enable the WAF ACL on the Application Load Balancer" is the correct answer.
+
+-> ec2 lo app run avuthunnapppudu temporary ga data ni ebs lo store chesthunnam anuko
+adhi tarvata rds loki veltadi vellelopu scruirty provide cheyyali antey
+
+Configure encryption for the Amazon EBS volumes and Amazon RDS database with AWS KMS keys" is the correct answer.
+
+-> 3-tier arch create chesinappudu that the web server layer may be vulnerable to cross-site scripting (XSS) attacks nundi
+save cheyyali antey loadblalncer ki AWS  WAF ni enable cheyyali
+
+-> Shield is used to protect against DDoS attacks.
+
+
+
+
+
+
+
+
+
+
+
