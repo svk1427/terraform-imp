@@ -146,3 +146,58 @@ An application load balancer (ALB) can be used to direct traffic to the web appl
 
 Lastly, the Amazon Elastic File System (EFS) can assist with increasing the resilience of the application by providing 
 a shared file system that can be mounted by multiple EC2 instances from multiple availability zones.
+
+
+-> eadaina on-premises lo data ni cloud ki migrate cheyyali antey storage gateway ni use cheyyali
+EFS kuda use cheyyochu kani manaki requirement lo durability and ha vundali antey SG use chetsam.
+
+-> eadain high performance apps,video processing, financial modeling, and electronic design automation (EDA) lanti
+high performance and fast processing workloads on-premises nundi cloud ki migrate avvali anukune "FSX for luster" use chestam high-per kosam
+-> access chesina data ni store cheyyali antey s3 use cheyyali bcz Amazon FSx works natively with Amazon S3, 
+making it easy to access your S3 data to run data processing workloads.
+
+-> eppuaina, ekkadain HPC word kanipisthey on-premisis/cloud first FSx luster mindloki ravali
+e Fsx cluster files ni  S3 for long-term and cost-effective storage of output files store chestadi.
+
+-> windows file storage anna, windows file shariing on premisis or cloud ela ekkadaina storage
+cheyyali antey FSx windows cluster use chestam edhi also highly durable and available file systems that can span multiple availability zones (AZs) provide chesyadi
+
+-> ec2 ki samandhinchi eadain cost-effective antey first iops ni check cheyyali
+
+-> eadain sensitive data ni s3 loki upload chesinappudu client side ea security proviede cheyyali
+ela antey Use a customer master key (CMK) stored in Kms keys tho kani You cannot use S3 managed keys with client-side encryption.
+
+-> Ec2 lo eadaina database data manaki speed ga access avvakapotey adhi disk issues
+dhiniki sol iops ni set cheyyali like io2 iops/gp2/gp3
+-> Adey ec2 lo apps avi access avvakapotey cpu utilization issues
+dhiniki sol instances ni upgrade cheydam// ASG ni set hcyedam cheyyali
+-> ec2 instance store high performance kosam use chestam 
+
+-> Eadaina sttaic website content ni access cheyyali annappudu
+Ha kavali annappudu "Amazon CloudFront with an Amazon S3 bucket origin" ni use cheyyali
+
+-> S3 bucket lo vunna data ni first week lo analyze chesi and tarvata appudu kavalantey appudu available ga vundali
+"Configure a lifecycle policy to transition the objects to Amazon S3 Standard-Infrequent Access (S3 Standard-IA) after 30 days" is the correct answer.
+
+->Amazon FSx for Windows File Server provides fully managed, 
+highly reliable file storage that is accessible over the industry-standard Server Message Block (SMB) protocol.
+
+-> eadain app ec2 lo run avuthu dhaniki ASG,ALB set chesi vundi ah app 
+lo data every day update avuthunnappudu dhaniki shared storage kavali
+sol:
+Amazon EFS is a fully-managed service that makes it easy to set up, scale, and cost-optimize file storage in the Amazon Cloud.
+EFS file systems are accessible to Amazon EC2 instances via a file system interface
+(using standard operating system file I/O APIs) and support full file system access semantics (such as strong consistency and file locking).
+
+EFS is a good solution for when you need to attach a shared filesystem to multiple EC2 instances across multiple Availability Zones.
+
+-> Epppudaina ec2 ki storage attach cheyyali , shared storage =kavali annappudu first efs trigger avvali
+
+-> data storage ki samandhinchi, on-premisi lo vunna db backup s3 loki velllali kani cost thakkuvali antey
+
+-> AWS DataSync is an online data transfer service that simplifies, automates, and accelerates copying 
+large amounts of data between on-premises systems and AWS Storage services, as well as between AWS Storage services.
+
+
+
+
