@@ -14,7 +14,7 @@ resource "aws_instance" "myec2vm" {
   vpc_security_group_ids = [ aws_security_group.vpc-ssh.id, aws_security_group.vpc-web.id ]
   # Create EC2 Instance in all Availabilty Zones of a VPC  
   for_each = toset(data.aws_availability_zones.my_azones.names) #foreach accepts only map or setofstrings, not strings or lists
-  #ekkada az anni list lo vuntai, so ah list ni e tomap fun setofstrings ki convert chestadi, concvert chesina values ni each.key
+  #ekkada az anni list lo vuntai, so ah list ni e toset fun setofstrings ki convert chestadi, concvert chesina values ni each.key
   #or each.value tho refer chesi access chestam
   availability_zone = each.key  # You can also use each.value because for list items each.key == each.value
   tags = {
@@ -22,7 +22,7 @@ resource "aws_instance" "myec2vm" {
   }
 }
 
-# for each is a equalent to count but it is advanced than count , count given only count.index but foreach given maps or setof strings
+# for each is a equalent to count but it is advanced than count , count given only count.index but foreach given maps or setofstrings
 # in foreach you have to give maps or setofstrings, there is no concept like 0,1,2 ex: multiple az,subnetids
 # it not accepts list like ["1", "2", "3"] so now toset function is used to converts args into setofvalue
 
