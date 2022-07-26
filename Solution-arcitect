@@ -1,0 +1,203 @@
+Storage Section:
+================
+Q.eadain company lo NFS protocol/nfs file system use chesthu adhi full ipotey marcchalanna
+dhani backup cloud help tho cheyyalanna Storage gateway file system use chestam endukantey 
+it is suitable for mounting via the NFS and SMB protocols.
+
+Best solution for tis:
+Explanation
+The AWS Storage Gateway Hardware Appliance is a physical, standalone, validated server configuration for on-premises deployments. It comes pre-loaded with Storage Gateway software, and provides all the required CPU, memory, network, and SSD cache resources for creating and configuring File Gateway, Volume Gateway, or Tape Gateway.
+A file gateway is the correct type of appliance to use for this use case as it is suitable for mounting via the NFS and SMB protocols.
+
+CORRECT: "Use an AWS Storage Gateway file gateway hardware appliance on premises to replicate the data to Amazon S3" is the correct answer.
+=============================================================================================================================================================
+2. Eadaina data ni thakkuva days/hoours vunchali/vundali anukuntey Amazon S3 standard use cheyyali
+and also cost thakkuvali anukunna situation lo and requirement lo ea filesystem use cheykunda direct ga files storage cheyyali antey
+edhi best option and also there are no retrieval fees or minimum capacity charge per object.
+
+CRCT ASNSWER: Amazon S3 standard
+===================================================================================================================================================
+3.oka app on-premises servers lo run avutundi , ah app ki combination of block storage and NFS storage connect aie vunnai
+kani avi saripovatledu anduke cloud services use cheddam anuuntunnaru adhi kuda exisiting arch ni disturb cheykunda, what is best solution
+
+ekkada villu already nfs, block storage vadadam valla vatiki suitable aiena cloud storage ni thiskuntunnam
+kani s3, efs, fsx,backup lanti other file systems thiskovatledhu
+
+SOl:CORRECT: "Use an AWS Storage Gateway file gateway to replace the NFS storage" is a correct answer.
+
+CORRECT: "Use an AWS Storage Gateway volume gateway to replace the block storage(block storage antey volume gateway ani arda, cloud lo)" is a correct answer.
+
+EXP: e scenario lo, company cloud storage vadali anukuntudi instead of local storage , because adhi full ipodam valla
+so, AWS Storage Gateway volume gateway ni use chesi block-based storage systems as it is mounted over iSCSI replace chestham  
+and the file gateway ni use chesi the NFS file systems as it uses NFS replace chestam .
+==========================================================================================================
+4. eadain company on-premisses servers lo oka dynamic website ni run chestunnapudu, US lo
+company europe lo new service start cheyyali antey ah website ni vallaki kuda reach ayyela,
+access ayyela, performance bavundela vundali antey em cheyyyalo investigate cesthundi
+at the same time, website maddhathu matram US lone vundali.
+
+CORRECT: "Use Amazon CloudFront with a custom origin pointing to the on-premises servers" is the correct answer.
+
+Explanation
+cloudfront lo vunna custom origin able to cache dynamic websites, ah dynamic website on-premises servers lo run avuthunnappatiki
+cloudfront best provide performance optimizations for custom origins.
+=======================================================================================================================================
+5.manam s3 bucket loki oka huge ciritical/sensitive data ni upload chesinappudu
+adhi available ga visible ga vundi evaraina delete cheydaniki veeluga vunnappudu 
+ah data protect cheyyali accidental deletion avvakunda
+
+SOL:
+Multi-factor authentication (MFA) delete adds an additional step before an object can be deleted from a versioning-enabled bucket.
+
+With MFA delete the bucket owner must include the x-amz-mfa request header in requests to permanently delete an object version
+or change the versioning state of the bucket.
+
+CORRECT: "Enable versioning on the S3 bucket" is a correct answer.
+CORRECT: "Enable MFA Delete on the S3 bucket" is also a correct answer.
+==============================================================================================================
+Q. oka application oka region lo all az lo run avuthundi
+e app ki storage solution setup cheyyali ela antey, anni servers kuda oke time lo
+simultinious ga data ni access cheyyali and The solution must be highly scalable and easy to implement.The storage must be mounted using the NFS protocol.
+
+Explanation
+Ekkadaina ec2 ki storage access/issue vundi sol kavali antey first preference EFS,
+Amazon EFS provides scalable file storage for use with Amazon EC2.
+eadaina app multiple azs run avuthunnappudu or workloads kosam efs ni use chetsa,
+alagey ec2 lo vunna efs tho NFS protocol is used to mount the file system.
+
+With EFS you can create mount targets in each AZ for lower latency. 
+The application instances in each AZ will mount the file system using the local mount target.
+
+CORRECT: "Create an Amazon EFS file system with mount targets in each Availability Zone.
+Configure the application instances to mount the file system" is the correct answer.
+=======================================================================================================
+Q.oka sol,architect oka app thaluka log files ni s3 bucket lo store cheyyali anukuntundi
+itey vatini appudu acccess chestaro denni first acces chestaro telidhu dhiniki
+low cost lo solution vundali antey ea s3 storage class use cheyyali
+
+Explanation
+"The S3 Intelligent-Tiering storage class" is designed to optimize costs by automatically
+moving data to the most cost-effective access tier, without performance impact or operational overhead.
+
+It works by storing objects in two access tiers: 
+one tier that is optimized for frequent access and another lower-cost tier that is optimized for infrequent access. 
+This is an ideal use case for intelligent-tiering as the access patterns for the log files are not known.
+
+CORRECT: "S3 Intelligent-Tiering" is the correct answer.
+
+Q. eadaina company valla data ni cloud ki move cheyyali annapudu first file storage medha think cheyyali
+depends upon req, ea file system anedhi deceude cheyyali
+oka company valla data ni cloud ki move cheyyali anukuntunddi so vallaki 5tb for video procession with max I/O performance
+and 400tb for durable storage and 800tb for archival(longterm storage) ki kavali
+EXP:
+The best I/O performance can be achieved by using instance store volumes for the video processing. 
+This is safe to use for use cases where the data can be recreated from the source files so this is a good use case.
+
+For storing data durably Amazon S3 is a good fit as it provides 99.999999999% of durability.
+For archival the video files can then be moved to Amazon S3 Glacier which is a low cost storage option that is ideal for long-term archival.
+
+CORRECT: "Amazon EC2 instance store for maximum performance, Amazon S3 for durable data storage, and Amazon S3 Glacier for archival storage" is the correct answer.
+===================================================================================================================================
+Q.A company is migrating from an on-premises infrastructure to the AWS Cloud.
+kani ah app lo oka app log files wnindows file system lo stores cheyyali and keep data in sync.
+
+Explanation
+Amazon FSx for Windows File Server provides fully managed, highly reliable file storage that is accessible over the 
+industry-standard Server Message Block (SMB) protocol.
+
+Amazon FSx is built on Windows Server and provides a rich set of administrative features that include end-user
+file restore, user quotas, and Access Control Lists (ACLs).
+
+Additionally, Amazon FSX for Windows File Server supports Distributed File System Replication (DFSR) 
+in Single-AZ deployments as can be seen in the feature comparison table below.
+
+CORRECT: "Amazon FSx" is the correct answer.
+=============================================================================================================================
+Q. Eadaina company on-premises lo data ni backup chesthunnappudu thakkuva costs avvadaniki aws ni consult chesinappudu
+cost thakkuva aie req ni fullfill chesey sol evvali
+oka scenario lo sama elaney backup avvali and at the same time exisiting app and backup disturb avvakudadhu.
+
+Explination: The AWS Storage Gateway Tape Gateway enables you to replace using physical tapes 
+on premises with virtual tapes in AWS without changing existing backup workflows.
+Tape Gateway emulates physical tape libraries, removes the cost and complexity of managing physical tape infrastructure, 
+and provides more durability than physical tapes.
+
+CORRECT: "Connect the backup applications to an AWS Storage Gateway using an iSCSI-virtual tape library (VTL)" is the correct answer.
+================================================================================================================================================
+Q.A Microsoft Windows file server farm uses Distributed File System Replication (DFSR) to synchronize data in an on-premises environment. 
+The infrastructure is being migrated to the AWS Cloud.
+Eadaina issue manaki windows file system tho ochindi antey adhi on premises or cloud , backup , migrate whatever it is
+the only sol in AWS is "Amazon FSx".
+EXP:Amazon FSx for Windows file server supports DFS namespaces and DFS replication. 
+This is the best solution for replacing the on-premises infrastructure. Note the limitations for deployment:
+
+CORRECT: "Amazon FSx" is the correct answer.
+=================================================================================================================
+Q.oka app diff multi ec2 server lo run avuthundui and data ni ebs vol lo store chesthundi,
+future lo instannce crash aie data loss avvakunda vundali antey sol kavali
+
+CORRECT: "Create an Application Load Balancer with Auto Scaling groups across multiple Availability Zones.
+Store data on Amazon EFS and mount a target on each instance" is the correct answer.
+
+Explanation
+To increase the resiliency of the application the solutions architect can use Auto Scaling groups to launch and 
+terminate instances across multiple availability zones based on demand. 
+An application load balancer (ALB) can be used to direct traffic to the web application running on the EC2 instances.
+
+Lastly, the Amazon Elastic File System (EFS) can assist with increasing the resilience of the application by providing 
+a shared file system that can be mounted by multiple EC2 instances from multiple availability zones.
+
+
+-> eadaina on-premises lo data ni cloud ki migrate cheyyali antey storage gateway ni use cheyyali
+EFS kuda use cheyyochu kani manaki requirement lo durability and ha vundali antey SG use chetsam.
+
+-> eadain high performance apps,video processing, financial modeling, and electronic design automation (EDA) lanti
+high performance and fast processing workloads on-premises nundi cloud ki migrate avvali anukune "FSX for luster" use chestam high-per kosam
+-> access chesina data ni store cheyyali antey s3 use cheyyali bcz Amazon FSx works natively with Amazon S3, 
+making it easy to access your S3 data to run data processing workloads.
+
+-> eppuaina, ekkadain HPC word kanipisthey on-premisis/cloud first FSx luster mindloki ravali
+e Fsx cluster files ni  S3 for long-term and cost-effective storage of output files store chestadi.
+
+-> windows file storage anna, windows file shariing on premisis or cloud ela ekkadaina storage
+cheyyali antey FSx windows cluster use chestam edhi also highly durable and available file systems that can span multiple availability zones (AZs) provide chesyadi
+
+-> ec2 ki samandhinchi eadain cost-effective antey first iops ni check cheyyali
+
+-> eadain sensitive data ni s3 loki upload chesinappudu client side ea security proviede cheyyali
+ela antey Use a customer master key (CMK) stored in Kms keys tho kani You cannot use S3 managed keys with client-side encryption.
+
+-> Ec2 lo eadaina database data manaki speed ga access avvakapotey adhi disk issues
+dhiniki sol iops ni set cheyyali like io2 iops/gp2/gp3
+-> Adey ec2 lo apps avi access avvakapotey cpu utilization issues
+dhiniki sol instances ni upgrade cheydam// ASG ni set hcyedam cheyyali
+-> ec2 instance store high performance kosam use chestam 
+
+-> Eadaina sttaic website content ni access cheyyali annappudu
+Ha kavali annappudu "Amazon CloudFront with an Amazon S3 bucket origin" ni use cheyyali
+
+-> S3 bucket lo vunna data ni first week lo analyze chesi and tarvata appudu kavalantey appudu available ga vundali
+"Configure a lifecycle policy to transition the objects to Amazon S3 Standard-Infrequent Access (S3 Standard-IA) after 30 days" is the correct answer.
+
+->Amazon FSx for Windows File Server provides fully managed, 
+highly reliable file storage that is accessible over the industry-standard Server Message Block (SMB) protocol.
+
+-> eadain app ec2 lo run avuthu dhaniki ASG,ALB set chesi vundi ah app 
+lo data every day update avuthunnappudu dhaniki shared storage kavali
+sol:
+Amazon EFS is a fully-managed service that makes it easy to set up, scale, and cost-optimize file storage in the Amazon Cloud.
+EFS file systems are accessible to Amazon EC2 instances via a file system interface
+(using standard operating system file I/O APIs) and support full file system access semantics (such as strong consistency and file locking).
+
+EFS is a good solution for when you need to attach a shared filesystem to multiple EC2 instances across multiple Availability Zones.
+
+-> Epppudaina ec2 ki storage attach cheyyali , shared storage =kavali annappudu first efs trigger avvali
+
+-> data storage ki samandhinchi, on-premisi lo vunna db backup s3 loki velllali kani cost thakkuvali antey
+
+-> AWS DataSync is an online data transfer service that simplifies, automates, and accelerates copying 
+large amounts of data between on-premises systems and AWS Storage services, as well as between AWS Storage services.
+
+
+
+
