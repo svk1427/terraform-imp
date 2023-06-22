@@ -97,7 +97,7 @@ module "alb" {
     {
       name_prefix          = "app3-"
       backend_protocol     = "HTTP"
-      backend_port         = 8080
+      backend_port         = 8080  #ekkada mana app ea port to itey access avuthundo adhi estham, intahaka mundu varuku only webapp with 80 port but eppudu java app anduke port marindi 
       target_type          = "instance"
       deregistration_delay = 10 
       health_check = {
@@ -111,7 +111,7 @@ module "alb" {
         protocol            = "HTTP"
         matcher             = "200-399"
       }
-      stickiness = {
+      stickiness = {        # java weapp oka jvm ki stick aie vundali, mul.re ociinapuudu req anni oka server ki vellamani ela estam
         enabled = true
         cookie_duration = 86400
         type = "lb_cookie"
@@ -121,7 +121,7 @@ module "alb" {
       targets = {
         my_app3_vm1 = {
           target_id = module.ec2_private_app3.id[0]
-          port      = 8080
+          port      = 8080   #ekkada mana app ea port to itey access avuthundo adhi estham, intahaka mundu varuku only webapp with 80 port but eppudu java app anduke port marindi 
         },
         my_app3_vm2 = {
           target_id = module.ec2_private_app3.id[1]
@@ -133,7 +133,7 @@ module "alb" {
   ]
 
   # HTTPS Listener
-  https_listeners = [
+  https_listeners = [  #domain name google lo hit ceygane e page open aie /login estey app3 ki /app1 estey app1 ki /app2 estey app2 ki veltadi req
     # HTTPS Listener Index = 0 for HTTPS 443
     {
       port               = 443
@@ -182,15 +182,15 @@ module "alb" {
     # Rule-3: /* should go to App3 - User-mgmt-WebApp EC2 Instances    
     {
       https_listener_index = 0
-      priority = 3      
+      priority = 3      #priority num high vunna hanike re lu ekkuva velkladanki preference vuuntadi
       actions = [
         {
           type               = "forward"
-          target_group_index = 2
+          target_group_index = 2 #paina vunna 2 https_listener_rules web apps ki kani edhi ava app3 ki
         }
       ]
       conditions = [{
-        path_patterns = ["/*"]
+        path_patterns = ["/*"] #appudaitey direct a domain nae ni hit chestamo adhi direct ga e https_listener ni call chesi traffiic ni app3 ki forward chestadi
       }]
     },         
   ]

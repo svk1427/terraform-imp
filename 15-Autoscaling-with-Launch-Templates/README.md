@@ -1,3 +1,27 @@
+Launc configuration - launc template
+ASG -ASG
+
+LC tho compare chestey LT lo advanced features vunnai and latest edhi
+manam oka  template create chesi daniki mul.versions create cheyypochu
+ala chesinappudu a version numbers dwara canges ni identify ceyyocu dhinii templ.versioning antam
+
+next adv featre, templ.resulability - edhi ela antey oka base temp lo mana org ki samandincina
+base config antha vuntadi...dinni padhi sarlu marchakunda okesari templ create cestam, cesaka
+e base templ ni app.launc templ lo e base temp ni include chestam ...prathi proj lo prathisari
+a base config create ceykunda ah templ pratidaniki use cheskovacu
+
+ekkada manam ASG and launch templates renditiki res use chestam modules kadhu\
+
+manam app.specific temp create chesaka andulo eadaina change cesinappudu v2 ani eshtam
+
+a tarvata adi 2 versions ani chupistadi kani select avvadhu, temp clici chesi lopaalla ve select chesi set deualt v2 option click cesi sleect ceskovali
+
+LC manam okkasari create chesaka cange avvavu settingfs malli kothhadhi create cheskodame kani LT lo settinggs modify chesi changge cheskovachu at the same time versions maintain cheyyochu...manaki kavalsinappidiu kavalsina version use cheskovachu
+
+terraform wesite lo attribute reference lo vunnavi max outputs ga use chestam
+
+
+
 ---
 title: AWS Autoscaling with Launch Templates
 description: Create AWS Autoscaling with Launch Templates using Terraform

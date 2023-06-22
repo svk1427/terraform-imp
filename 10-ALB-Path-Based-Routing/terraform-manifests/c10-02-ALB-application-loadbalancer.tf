@@ -13,7 +13,7 @@ module "alb" {
   security_groups = [module.loadbalancer_sg.this_security_group_id]
   # Listeners
   # HTTP Listener - HTTP to HTTPS Redirect
-    http_tcp_listeners = [
+    http_tcp_listeners = [  #pdf arch prakaram, alb url/domain name  google lo iht cheygane http action aiena sare ttps ga maaripovali anduke e listener use avutadi
     {
       port               = 80
       protocol           = "HTTP"
@@ -57,7 +57,7 @@ module "alb" {
           port      = 80
         }
       }
-      tags =local.common_tags # Target Group Tags
+      tags = local.common_tags # Target Group Tags
     },  
     # App2 Target Group - TG Index = 1
     {
@@ -94,8 +94,8 @@ module "alb" {
   ]
 
   # HTTPS Listener
-  https_listeners = [
-    # HTTPS Listener Index = 0 for HTTPS 443
+  https_listeners = [ 
+    # HTTPS Listener Index = 0 for HTTPS 443, domain hit ceygane fixed response edi display avutundi
     {
       port               = 443
       protocol           = "HTTPS"
@@ -109,15 +109,15 @@ module "alb" {
     }, 
   ]
 
-  # HTTPS Listener Rules
+  # HTTPS Listener Rules, dinni pat pattern rule antam for context based pat routing , here pat antey /app1 or app2
   https_listener_rules = [
     # Rule-1: /app1* should go to App1 EC2 Instances
     { 
-      https_listener_index = 0
+      https_listener_index = 0 #L.97 lo https_listeners okatey vundi kabatti array index prakaram adih 0 avuthundi adey ekkada mention chesam endukantey e listener rule velli ah https listener tho asoociate avuthundi
       actions = [
         {
           type               = "forward"
-          target_group_index = 0
+          target_group_index = 0  #antey e traffic L.31 nundi start aiena TG1 ki forward avutundi so ekkada inidex prakaram a tg1 ni 0 tho mention chestam ala enni tg vuntey e index num ala iincrease avuthundi
         }
       ]
       conditions = [{
@@ -130,7 +130,7 @@ module "alb" {
       actions = [
         {
           type               = "forward"
-          target_group_index = 1
+          target_group_index = 1 #antey e traffic L.31 nundi start aiena TG1 ki forward avutundi so ekkada inidex prakaram a tg2 ni 1 tho mention chestam ala enni tg vuntey e index num ala iincrease avuthundi
         }
       ]
       conditions = [{

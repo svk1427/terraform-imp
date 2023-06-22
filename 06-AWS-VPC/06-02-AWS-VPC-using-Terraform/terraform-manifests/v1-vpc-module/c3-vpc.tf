@@ -1,6 +1,6 @@
 # Create VPC Terraform Module
 module "vpc" {
-  source  = "terraform-aws-modules/vpc/aws"
+  source  = "terraform-aws-modules/vpc/aws"   #child-module
   version = "2.78.0"  
   # version = "~> 2.78"
 

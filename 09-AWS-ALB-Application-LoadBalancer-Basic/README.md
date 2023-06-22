@@ -1,3 +1,20 @@
+manaki kavalantey anni res ni use chesi cretae cheyyochu but modules use cestey
+easy to use and deploy avuthundi
+
+mod loni vunna githu/giitlab repo ni open cestey akkada new relelases ani vuntadi
+ah new releases lo e alb lo tf vallu em implement cesaro kothhaga kanipistadi
+
+App1 TG associated to this listener, e tg_grp_index lo port 80 ni declare chesi vunnam so, 
+ekkada target_group_index value 0 vuntey adhi ah particular t group ki traffic ni forward chestadi
+e target_group_index ea http listener and tg madyalo association nii setup chestadi
+http listener ki reuest ochinappudu adhi e tg ki forward avutadi
+e close brace tarvata malli oka map open cheskoni mul.rules nii define cheskovachu
+
+e rules anedih lb select cesi andulo listeneres click chesi view rules click chesinappudu 
+akkada port 80 ki vunna def app1-tg , here target_group_index antey app1-tg
+ASG use chesinappudu e lb lo konni ouput values use avuthai
+
+
 # AWS Application Load Balancer Basics with Terraform
 
 ## Step-01: Introduction

@@ -30,13 +30,8 @@
 #   description = "For Loop with Map - Advanced"
 #   value = {for c, instance in aws_instance.myec2vm: c => instance.id}
 # }
-
-
-
-# IMP: value attribute lo ela direct ga echam endukantey manam ekkada aws_instance ane oka resource use chesthunnam kabatti ela direct ga echeyochu
-# ekkada manam count use cheydam valla because of that count argument ela echina thisekluntadi kani somecases lo
-# manam count evvam kani list items kavali alatappudu edhi use avvadhu foreach use cheyyali
-# here c maens count , how much number u given in count section it takes as a key and give value of public_dns
+#IMP: eadaina maps,lists lo vunna values ni retrieve cheyyali  antey for loop echi retrieve chesestam
+#adhi manam ec2 resource lo count attribute vaadinappudu.
 
 
 # Output Legacy Splat Operator (Legacy) - Returns the List

@@ -1,6 +1,6 @@
 terraform lo 2 states vuuntai 
 manam create chesina c1toc15 files ni desired state antam
-eadaitey infra create aiendo aws dashboard lo efiles valla ah dashboard ni plus ah whole info ni maintain
+eadaitey infra create aiendo aws dashboard lo tfiles valla ah dashboard ni plus ah whole info ni maintain
 chesthunna tf.state file ni current state antam
 
 need to maintain versions of tf.state files in s3 bucket is best practice - this is for state storage

@@ -1,3 +1,53 @@
+edi andukantey eavaina tf lo 2 proj vunnappudu, pro nundi otput values ni pro2 kavali
+annappudu e tf state data source use chesi techukuntam
+
+mana ex lo, pro vpc and proj2 ALB,ASG etc..e ALB,ASG anni kuda vpc lo create avvali
+so ekkaa manam vpc seperate ga create cyeykuunda a proj1 state dwara use cheskuntam
+
+proj1 state file s3 bucket lo vuntadi dhanini manam proj2 lo access chestam
+
+ela access chestam antey proj2 lo terraform_remote_state data source use chesi s3 lo
+vunna proj1 state file ni access chestey ah state file ni base cheskoni proj2 lo
+proj1 thaluka infra create avtadi ala vpc lo ah AS,ALB anni create avuthai.
+
+main ga edi jaragalantey confirm ga proj1 state files s3 bucket lo vundali
+
+ela chesinappudu proj2 lo proj1 state file nundi techukundam anukunna confiug files 
+eavi vundakudadhuu
+
+asala edhi proj1 vpc state file ni use cheskoni ela reference tiskuuntadi antey
+
+proj2 lo eavaitey values ni proj1 nundi tiskuntundo avi ah module(vpc) yokka output values
+ah o/p values ni e proj2 lo internal ga data source ni use cheskoni thiskuntadi, thiskoni 
+dhani dwara proj1 state file ni use cheskoni proj2 ni create chestadi
+
+ex:
+/*
+1. Security Group 
+vpc_id = data.terraform_remote_state.vpc.outputs.vpc_id 
+#ekkada data.terraform_remote_state.vpc c0 file nundi tiskunnavi
+#outputs.vpc_id anedhi proj1 lo vpc output file(c4-03) nundi thhiskunnadhi
+# so ala e kinda annitiki kuda thiskuntadi internal ga kani bayataki matram proj1 state file ni use cheskoni proj2 create avuthundi antam.
+ingress_cidr_blocks = [data.terraform_remote_state.vpc.outputs.vpc_cidr_block]
+
+2. Bastion Host
+subnet_id = data.terraform_remote_state.vpc.outputs.public_subnets[0]
+
+3. ALB
+subnets = data.terraform_remote_state.vpc.outputs.public_subnets
+
+4. ASG
+  vpc_zone_identifier = data.terraform_remote_state.vpc.outputs.private_subnets 
+
+5. Null Resource
+    command = "echo VPC created on `date` and VPC ID: ${data.terraform_remote_state.vpc.outputs.vpc_id} >> creation-time-vpc-id.txt"
+*/
+
+The terraform_remote_state data source retrieves the root module(proj1) output values from some other Terraform configuration, using the latest state snapshot from the remote backend.
+
+
+
+
 ---
 title: Terraform Remote State Datasource Demo
 description: Terraform Remote State Datasource Demo with two projects

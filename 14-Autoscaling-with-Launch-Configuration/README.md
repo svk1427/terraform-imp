@@ -1,3 +1,10 @@
+exisiting files:
+
+inthhaka mundu vunna config files laaga ec2 instacnes direct ga ec2 module tho create cheykunda real time lo laga eppudu ASG tho ec2  lu trigger ayyela create chestam anduke 
+prev.files lo ec2 create aiena app1,2,3 files remove chesestam
+
+outputs kuda delete chesetam kani bastion host o/p vuntai bcz pri,.server loki login avvadaniki e bastion server/outputs use avuthai
+
 ---
 title: AWS Autoscaling with Launch Configuration
 description: Create AWS Autoscaling with Launch Configuration using Terraform

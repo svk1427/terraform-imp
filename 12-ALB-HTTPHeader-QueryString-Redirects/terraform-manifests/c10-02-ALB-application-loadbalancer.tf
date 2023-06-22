@@ -113,6 +113,7 @@ module "alb" {
   # HTTPS Listener Rules
   https_listener_rules = [
     # Rule-1: custom-header=my-app-1 should go to App1 EC2 Instances
+    # CH antey values lo vunna eadih ch ga echina adhi ah specified tg ki redirect ki velthundi
     { 
       https_listener_index = 0
       priority = 1      
@@ -137,7 +138,7 @@ module "alb" {
       priority = 2      
       actions = [
         {
-          type               = "forward"
+          type               = "forward" #forward antey traffic ah particular path ki forward cestadi same website lo
           target_group_index = 1
         }
       ]
@@ -146,35 +147,37 @@ module "alb" {
         #host_headers = [var.app2_dns_name]
         http_headers = [{
           http_header_name = "custom-header"
-          values           = ["app-2", "app2", "my-app-2"]
+          values           = ["app-2", "app2", "my-app-2"] # e values list lo vunnai kabatti enni values aiena thiskuntadi
         }]        
       }]
     },    
   # Rule-3: When Query-String, website=aws-eks redirect to https://stacksimplify.com/aws-eks/
     { 
       https_listener_index = 0
-      priority = 3
+      priority = 3 # e priority anedhi oka rule tarvata okati exec avvadaniki use avutadi
       actions = [{
-        type        = "redirect"
-        status_code = "HTTP_302"
-        host        = "stacksimplify.com"
-        path        = "/aws-eks/"
+        type        = "redirect" # redirect antey mean ea inkoka website nundi ochina req ni mana alb handle cesi ah particular host ki ah path ki redirect chestadi
+
+        status_code = "HTTP_302" # 302 status antey inkooka website ki redirect avvaamni
+        host        = "stacksimplify.com" # e website ki redirect aie
+        path        = "/aws-eks/" # e path loki velli website open avutadui
         query       = ""
-        protocol    = "HTTPS"
+        protocol    = "HTTPS" # https website with SSL cert thoh open avutadi
       }]
       conditions = [{
-        query_strings = [{
+        query_strings = [{  #query string antey oka lb nundi inkoka websiite ki redirect avuthundi
           key   = "website"
           value = "aws-eks"
           }]
       }]
     },
   # Rule-4: When Host Header = azure-aks.devopsincloud.com, redirect to https://stacksimplify.com/azure-aks/azure-kubernetes-service-introduction/
+  # ekkada echina prathi domain name c12 file lo register avvali ala iteyne work avuthai
     { 
       https_listener_index = 0
       priority = 4
       actions = [{
-        type        = "redirect"
+        type        = "redirect" # redirect antey mean ea inkoka website nundi ochina req ni mana alb handle cesi ah particular host ki ah path ki redirect chestadi
         status_code = "HTTP_302"
         host        = "stacksimplify.com"
         path        = "/azure-aks/azure-kubernetes-service-introduction/"
@@ -182,7 +185,7 @@ module "alb" {
         protocol    = "HTTPS"
       }]
       conditions = [{
-        host_headers = ["azure-aks101.devopsincloud.com"]
+        host_headers = ["azure-aks101.devopsincloud.com"] #host header antey e website nundi req ragane adhi paina vunna stackimplify website ki velli ah part path website ni display chestadi
       }]
     },    
   ]

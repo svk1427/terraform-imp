@@ -1,6 +1,11 @@
 ###### Target Tracking Scaling Policies ######
 # TTS - Scaling Policy-1: Based on CPU Utilization of EC2 Instances
 # Define Autoscaling Policies and Associate them to Autoscaling Group
+# so e 2 actions lo eadhi jarigna sare new servers add avthai mana infra ki
+# edhi ela jarugutadi antey internal ga ASG lo Auomatic scaling lo manam crreate chesina
+# e policy lo add avuthsi wit the help of L.no.10, ala add avthai kabatti eppudaitey
+# e policy action trigger ayyayo ah ASG lo vunna dani prakaram scale avuthai mana asgg lo min 2
+# max 10 vunnai so ah vidhammga scale avuthai ...edhi ala work avutadi
 resource "aws_autoscaling_policy" "avg_cpu_policy_greater_than_xx" {
   name                   = "avg-cpu-policy-greater-than-xx"
   policy_type = "TargetTrackingScaling" # Important Note: The policy type, either "SimpleScaling", "StepScaling" or "TargetTrackingScaling". If this value isn't provided, AWS will default to "SimpleScaling."    
@@ -11,7 +16,7 @@ resource "aws_autoscaling_policy" "avg_cpu_policy_greater_than_xx" {
     predefined_metric_specification {
       predefined_metric_type = "ASGAverageCPUUtilization"
     }
-    target_value = 50.0
+    target_value = 50.0   #cpu utiliz 50% itey e plociy enable aie auto scaling policy work avutadi
   } 
    
 }
@@ -25,7 +30,7 @@ resource "aws_autoscaling_policy" "alb_target_requests_greater_than_yy" {
   # Number of requests > 10 completed per target in an Application Load Balancer target group.
   target_tracking_configuration {
     predefined_metric_specification {
-      predefined_metric_type = "ALBRequestCountPerTarget"
+      predefined_metric_type = "ALBRequestCountPerTarget" #eadaina manual policy mnanam create cesi upload cheyyalantey tf imiport cmnd toh upload chesi ekkada mention cheyyochu, github readme lo clear ga vundi
       resource_label =  "${module.alb.lb_arn_suffix}/${module.alb.target_group_arn_suffixes[0]}"    
     }  
     target_value = 10.0

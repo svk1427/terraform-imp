@@ -23,10 +23,10 @@ output "instance_publicdns2" {
 }
 
 /*
-IMP: value attribute lo ela(aws_instance.myec2vm[*].public_dns) direct ga echam endukantey manam ekkada aws_instance ane oka 
-resource use chesthunnam kabatti ela direct ga echeyochu kani
-ekkada manam count use cheydam valla because of that count argument ela echina thiseskuntadi kani somecases lo
-manam count evvam kani list items kavali alatappudu edhi use avvadhu forloop use cheyyali
+IMP: splat attribute value attribute lo ela(aws_instance.myec2vm[*].public_dns) direct ga echam undu example lo endukantey manam akkada  
+aws_instance ane oka resource use chesthunnam kabatti ela direct ga echeyochu
+akkada manam count use cheydam valla because of that count argument ela echina thiseskuntadi kani ekkada
+manam list lo items kavali alatappudu edhi use avvadhu forloop use cheyyali
 
 output value lo tomap,toset endukku estahm antey anni values same type loki convert avvalantey evi use cheyyali
 evi enduku antey values lo ea variable values vunna convert chessestadi

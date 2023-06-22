@@ -1,4 +1,11 @@
 ---
+Indulo user url hit cheygane first req igw ki velthundi ah tarvata route53 dns ki velthundi
+and now go to ALB and forward traffic to specified tgs.
+
+edi general ga qa.companydomain.com and dev.companydomain.com anna cases lo use avutadi
+ela antey oka alb use chesi 2 different servers lo 2 different apps ni deplpoy chesi e 
+header based routing dwara alb ni use chesi manam ah apps ni access cheyyochu
+
 title: AWS ALB Host Header based Routing using Terraform
 description: Create AWS Application Load Balancer Host Header based Routing Rules usign Terraform
 ---

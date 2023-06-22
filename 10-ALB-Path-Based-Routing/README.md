@@ -1,3 +1,25 @@
+alb 443 https gga work cheyyalantey al yokka sg lo e https ni open cheyyli
+
+edi access ceyyalantey listeners lo 4443 ni declare cheyyali
+
+need to create tg for app2, need to redirect http to ttps
+
+e https listener first root webpage ki velllali tarvata app1/app2 ki vellali
+
+natgw ni public subnet lo create cestam endukantey edih priv.subnet lo vunna 
+
+ec2 instances ki public access estadi alaggey pub.sub lo vunna bastion public server ki
+
+internetgw dwara internet access vuntadi, e astion server dwara manam priv.ins and db servers ni access cestam
+
+ALB ki Ssl certificate kuda setup chestam and domain name kuda route53 toh register cheskuntam
+
+context path based routing antey /app1 /app2 ela pages/apps ni estam
+
+http listeners and http listener rules rendu veru
+
+
+
 # AWS ALB Context Path based Routing using Terraform
 
 ## Step-00: Pre-requisites

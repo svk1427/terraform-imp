@@ -1,5 +1,10 @@
 # Define CloudWatch Alarms for ALB
 # Alert if HTTP 4xx errors are more than threshold value
+#diniki meaning eti antey eppudaitey mana app ki 400 errors ostunnayo appudeu alarm trigger avvamani
+#HTTPCode_Target_4XX_Count e metric names manaki tf lo vundav kani manaki kavalantey elantivatini
+#findout cheyyali AWS condole lo, ela antey go to cloudwatch->explorer->select whaterver u ewant
+#here i select APPELB to get more metrics like this
+#alaney metrics loki velli mana alb ki ea metrics evvocho kuda chskovacuh aws consoile lo
 resource "aws_cloudwatch_metric_alarm" "alb_4xx_errors" {
   alarm_name          = "App1-ALB-HTTP-4xx-errors"
   comparison_operator = "GreaterThanThreshold"
@@ -19,8 +24,8 @@ resource "aws_cloudwatch_metric_alarm" "alb_4xx_errors" {
   alarm_actions     = [aws_sns_topic.myasg_sns_topic.arn]
 }
 
-# Per AppELB Metrics
-## - HTTPCode_ELB_5XX_Count
+# Per AppELB Metrics, evanni app alb level metrics
+## - HTTPCode_ELB_5XX_Count  #500 page errors ochinappudu edhi use cheyyali like alll below
 ## - HTTPCode_ELB_502_Count
 ## - TargetResponseTime
 # Per AppELB, per TG Metrics

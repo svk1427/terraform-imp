@@ -1,3 +1,20 @@
+confuse avvakunda chudali e sec lo mod ni update chesi chala places lo
+output and output ref lo this remove chesesaru
+
+tf apply run chesinappudu -var-file estheyne secret file access avutadi lekapoty avvadhu
+
+eadaina mod lo value ni inkoka mod lo reference ga thiskunnappudu dhanni o/p declare chesina
+cheykapoiena use ceskovachu for ex,database subnets
+
+tem fle antey ah file path plus vars kuda evvali endukantey ah var ni base cheskoni ah file
+lo vunna data antha app lo install avtadi
+
+ah templatefile lo mul values evvochu kavalantey
+
+var/outputs lo d password ni sensitive a use chesam bcz its confidential
+
+migatha vatithio  compare cestey e mangmnt app 8080 port medha run avutadi 
+so a sec.grp kuda ingress lo echam e config files lo
 ---
 title: Terraform DNS to DB Demo on AWS with EC2
 description: Create a DNS to DB Demo on AWS with Route53, ALB, EC2 and RDS Database with 3 Applications

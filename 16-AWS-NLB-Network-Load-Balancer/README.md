@@ -1,3 +1,7 @@
+E nlb lo http traffic nlb ki velli dhani dwara servers ki velthundi ala kakunda
+ssl termination jarigi https traffic kuda e nlb ki velthundi ala vellali antey nlb tls listeners ni setup ceyyali
+
+nlb iplement chesinappudu targetgrouparn ni alb nundi nlb ki change cheyyali LT config files lo
 ---
 title: AWS Network Load Balancer with Terraform
 description: Create AWS Network Load Balancer with Terraform - Demo for both TCP and TLS Listeners

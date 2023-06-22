@@ -35,7 +35,7 @@ resource "null_resource" "name" {
     #on_failure = continue
   }  
   */
-
+  
 }
 
 # Creation Time Provisioners - By default they are created during resource creations (terraform apply)

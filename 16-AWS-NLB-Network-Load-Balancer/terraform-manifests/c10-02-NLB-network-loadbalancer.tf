@@ -7,9 +7,9 @@ module "nlb" {
   load_balancer_type = "network"
   vpc_id = module.vpc.vpc_id
   subnets = module.vpc.public_subnets
-  
+  # nlb ki sg avasaram ledhu
   #  TCP Listener 
-  http_tcp_listeners = [
+  http_tcp_listeners = [ #tcp listener antey http traffic user nundi NLB ki vasthundi
     {
       port               = 80
       protocol           = "TCP"
@@ -18,12 +18,12 @@ module "nlb" {
   ]
 
   #  TLS Listener
-  https_listeners = [
+  https_listeners = [ #tls listener antey https traffic user nundi NLB ki vasthundi
     {
       port               = 443
       protocol           = "TLS"
       certificate_arn    = module.acm.acm_certificate_arn
-      target_group_index = 0
+      target_group_index = 0 # single app, single nlg, single ASGG kabatti e value 0 vuntundi renditiki
     },
   ]
 

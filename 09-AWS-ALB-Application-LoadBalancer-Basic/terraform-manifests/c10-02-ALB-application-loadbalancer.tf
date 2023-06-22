@@ -12,15 +12,18 @@ module "alb" {
   ]
   security_groups = [module.loadbalancer_sg.this_security_group_id]
   # Listeners
-  http_tcp_listeners = [
-    {
+  http_tcp_listeners = [  # e open brace vuntey list ani ardam, edi lb setting
+    {           
       port               = 80
       protocol           = "HTTP"
-      target_group_index = 0 # App1 TG associated to this listener
-    }
+      target_group_index = 0 # App1 TG associated to this listener, e tg_grp_index lo port 80 ni declare chesi vunnam so, 
+                            # ekkada target_group_index value 0 vuntey adhi ah particular t group ki traffic ni forward cestadi
+                            # e target_group_index ea http listener and tg madyalo association nii setup chestadi
+                            # http listener ki reuest ochinappudu adhi e tg ki forward avutadi
+    }                        # e close brace tarvata malli oka map open cheskoni mul.rules nii define cheskovachu
   ]  
   # Target Groups
-  target_groups = [
+  target_groups = [         
     # App1 Target Group - TG Index = 0
     {
       name_prefix          = "app1-"
@@ -40,7 +43,7 @@ module "alb" {
         matcher             = "200-399"
       }
       protocol_version = "HTTP1"
-      # App1 Target Group - Targets
+      # App1 Target Group - Register Targets info
       targets = {
         my_app1_vm1 = {
           target_id = module.ec2_private.id[0]

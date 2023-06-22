@@ -14,3 +14,7 @@ resource "aws_iam_service_linked_role" "autoscaling" {
 output "service_linked_role_arn" {
     value   = aws_iam_service_linked_role.autoscaling.arn
 }
+
+#edhoka unique IAM role edi aws services ki direct ga link avutadi config lo evvadam valla
+#all permissions tho e service linked roles predefined ga vuntai, eadaina aws serv inkoka 
+#servc ni mana tarupuna e role call chestadi

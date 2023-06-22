@@ -8,11 +8,11 @@ module "alb" {
   load_balancer_type = "application"
   vpc_id = module.vpc.vpc_id
   /*Option-1: Give as list with specific subnets or in next line, pass all public subnets 
-  subnets = [
+  subnets = [ #ela rasinappudu oka 50 subnets vuntey anni mention cheydam correct kadu
     module.vpc.public_subnets[0],
     module.vpc.public_subnets[1]
   ]*/
-  subnets = module.vpc.public_subnets
+  subnets = module.vpc.public_subnets # ela rasinappudu oka 50 subnets vunna sare thiskuntadi 
   #security_groups = [module.loadbalancer_sg.this_security_group_id]
   security_groups = [module.loadbalancer_sg.security_group_id]
   # Listeners
@@ -49,7 +49,7 @@ module "alb" {
         protocol            = "HTTP"
         matcher             = "200-399"
       }
-      protocol_version = "HTTP1"
+      protocol_version = "HTTP1" #ASG use chesinappudu ela direct ga ec2 ki traffic forward ceydam avvadhu, ASG use cesi ALB ki traffic forward cyeydaniki target_alb_arn avasaram
      /* # App1 Target Group - Targets
       targets = {
         my_app1_vm1 = {

@@ -35,3 +35,5 @@ resource "aws_route53_record" "app2_dns" {
     evaluate_target_health = true
   }  
 }
+
+#ekkada antha kuda same pat based routing la jarugutadi but sligt dfference in domain section

@@ -1,3 +1,7 @@
+this anedhii o/p lo mod tho ochindi, eppudu latest modules lo
+o/p ni this tho declare cheydam manesaru for ex, mod.alb.dns_name
+previously, mod.alb.this_dns_name, so appudaina mod version marche mundu a mod lo ochina 
+canges ni kuda observe chesi mana iinfra lo kuda accoringly change cheyyali
 ---
 title: AWS ALB Different Listener Rules for Routing
 description: Create AWS Application Load Balancer Custom HTTP Header, 302 Redirects with Query String and Host Headers

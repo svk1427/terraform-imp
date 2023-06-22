@@ -28,8 +28,8 @@ resource "aws_cloudwatch_metric_alarm" "app1_asg_cwa_cpu" {
   alarm_description = "This metric monitors ec2 cpu utilization and triggers the ASG Scaling policy to scale-out if CPU is above 80%"
   
   ok_actions          = [aws_sns_topic.myasg_sns_topic.arn]  
-  alarm_actions     = [
-    aws_autoscaling_policy.high_cpu.arn, 
+  alarm_actions     = [  #viti valla alaram trigger avvagane mail velli 4 instances scale avuthai
+    aws_autoscaling_policy.high_cpu.arn, #edhi manam paina mention chesina resource
     aws_sns_topic.myasg_sns_topic.arn
     ]
 }

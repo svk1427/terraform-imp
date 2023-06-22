@@ -25,7 +25,7 @@ module "ec2_private" {
   depends_on = [ module.vpc ] # VERY VERY IMPORTANT else userdata webserver provisioning will fail
   source  = "./modules/aws-ec2"
   #version = "2.17.0"
-   #for_each = toset([ module.vpc.private_subnets[0],module.vpc.private_subnets[1] ])
+  #for_each = toset([ module.vpc.private_subnets[0],module.vpc.private_subnets[1] ])
   for_each = toset(["0", "1"])
   # insert the 10 required variables here
   name                   = "${var.environment}-vm-${each.key}"
@@ -40,7 +40,8 @@ module "ec2_private" {
   tags = local.common_tags
 }
 
-#element retrieves a single element from a list. in the above first convert list into setofstring and get the value with element function.
+#element retrieves te value of a single element from a list. in the above first convert list into 
+#setofstring and get the value with element function.
 #Element syntax - element(list, index)
 #tonumber converts its argument to a number value.
 

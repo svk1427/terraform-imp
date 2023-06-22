@@ -4,7 +4,7 @@ resource "aws_autoscaling_schedule" "increase_capacity_9am" {
   scheduled_action_name  = "increase-capacity-9am"
   min_size               = 2
   max_size               = 10
-  desired_capacity       = 8
+  desired_capacity       = 8 # antey scale inappudu up avvalsina server count
   start_time             = "2030-12-11T09:00:00Z"
   recurrence             = "00 09 * * *"
   autoscaling_group_name = module.autoscaling.autoscaling_group_id 

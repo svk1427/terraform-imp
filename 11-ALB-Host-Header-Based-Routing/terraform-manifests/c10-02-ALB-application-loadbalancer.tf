@@ -113,16 +113,16 @@ module "alb" {
   https_listener_rules = [
     # Rule-1: app1.devopsincloud.com should go to App1 EC2 Instances
     { 
-      https_listener_index = 0
+      https_listener_index = 0 #edi ttp traffic ni https ki convert chestadi
       actions = [
         {
           type               = "forward"
-          target_group_index = 0
+          target_group_index = 0 #edi https traffic ni tg1(L.31) ki convert chestadi
         }
       ]
       conditions = [{
         #path_patterns = ["/app1*"]
-        host_headers = [var.app1_dns_name]
+        host_headers = [var.app1_dns_name] #ekkada e hh lo vunna value ni domain name ga tiskoni alb ki ochina traffc ni ah tg ki forward chestadi
       }]
     },
     # Rule-2: app2.devopsincloud.com should go to App2 EC2 Instances    

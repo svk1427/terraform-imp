@@ -1,3 +1,23 @@
+inidulo ec2,vpc,sg mod ni use chesi br lo vunnattey a mod lo vunna values ni
+mana files lo declare chesi infra ni create chestam
+single ec2 create cestey subnetid estam ut mul ec2 create chesinappudu
+subnetds value estham, vpc create cesinappudu nat gw create avvadaniki time padatadi
+so ekkada priv insta create avvadaniki pri.sub vunte chalu, natgw tho samanadham lekunda 
+priv.sub create avvagane priv.servers create ipothai kani ekkada manaki server lo
+httpd services install chestam kabatti ah priv.servers ki natgw avaasaram ecause 
+adhi natw outbond dwara installl chestadi, so anduke ekkada total vpc create ipoyaka
+e priv.inst ni create cheyani dependon meta.arg estam
+
+prov antey eadaitey manam tf use chesi create chestamo adhi local,remote lo aiena
+specific action jaragadaniki edhi use aie infra ni prepare cestadi, for ex
+c9 lo local lo vunna pem file ni bastion server ki upload chesi, bastion server 
+nundi pri.server ki conn avvadaniki use avtadi
+
+e prov ni manam res ki direct ga assoc avvakunda run cheyyali antey null res 
+lo declare chesi run cheyyali
+
+
+
 # Build AWS EC2 Instances, Security Groups using Terraform
 
 ## Step-01: Introduction
@@ -402,4 +422,3 @@ terraform destroy -auto-approve
 rm -rf .terraform*
 rm -rf terraform.tfstate*
 ```
-

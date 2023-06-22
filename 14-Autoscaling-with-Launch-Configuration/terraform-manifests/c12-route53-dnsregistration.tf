@@ -9,3 +9,5 @@ resource "aws_route53_record" "apps_dns" {
     evaluate_target_health = true
   }  
 }
+
+#inidulo doain name maruthundi as per topic

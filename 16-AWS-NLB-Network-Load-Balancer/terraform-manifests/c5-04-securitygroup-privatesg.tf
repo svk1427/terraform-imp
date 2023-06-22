@@ -11,7 +11,7 @@ module "private_sg" {
   # Ingress Rules & CIDR Blocks
   ingress_rules = ["ssh-tcp", "http-80-tcp", "http-8080-tcp"]
   #ingress_cidr_blocks = [module.vpc.vpc_cidr_block]
-  ingress_cidr_blocks = ["0.0.0.0/0"] # Required for NLB
+  ingress_cidr_blocks = ["0.0.0.0/0"] # Required for NLB,need to give public access in SG, it doesnt take vpc local network address
   # Egress Rule - all-all open
   egress_rules = ["all-all"]
   tags = local.common_tags

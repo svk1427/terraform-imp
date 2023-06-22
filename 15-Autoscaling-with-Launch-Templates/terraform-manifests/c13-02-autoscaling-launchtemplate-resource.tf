@@ -9,7 +9,7 @@ resource "aws_launch_template" "my_launch_template" {
   key_name = var.instance_keypair
   user_data = filebase64("${path.module}/app1-install.sh")
   ebs_optimized = true 
-  #default_version = 1
+  #default_version = 1  # this line for which ver we need to use
   update_default_version = true 
   block_device_mappings {
     device_name = "/dev/sda1"

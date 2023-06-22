@@ -5,10 +5,10 @@ resource "aws_autoscaling_group" "my_asg" {
   max_size = 10
   min_size = 2
   vpc_zone_identifier = module.vpc.private_subnets
-  target_group_arns = module.alb.target_group_arns
+  target_group_arns = module.alb.target_group_arns #very very imp, because this is the line is usued to associate ASG wit ALB
   health_check_type = "EC2"
   #health_check_grace_period = 300 # default is 300 seconds
-  launch_template {
+  launch_template { # dinni base ceskoni asg create ayyi work avuthundi, dinni create asg associate with this launch temp antam
     id = aws_launch_template.my_launch_template.id 
     version = aws_launch_template.my_launch_template.latest_version
   }
