@@ -34,7 +34,8 @@ module "ec2_private" {
   key_name               = var.instance_keypair
   #monitoring             = true
   vpc_security_group_ids = [module.private_sg.security_group_id]
-  subnet_id =  element(module.vpc.private_subnets, tonumber(each.value)) #List nundi values osthunnai kabatti ekkada each.key / each.value eadhi echina parledhu adey map nundi osthey must and should ga eack.key ea thiskovali
+  subnet_id =  element(module.vpc.private_subnets, tonumber(each.value)) 
+  #List nundi values osthunnai kabatti ekkada each.key / each.value eadhi echina parledhu adey map nundi osthey must and should ga eack.key ea thiskovali
   instance_count         = var.private_instance_count
   user_data = file("${path.module}/app1-install.sh")
   tags = local.common_tags
