@@ -1,4 +1,4 @@
-aws ki fulll secure evvadaniki encmark controls doc cudali
+aws ki fulll secure evvadaniki benchmark controls doc cudali
 
 ---
 title: AWS CloudWatch using Terraform
